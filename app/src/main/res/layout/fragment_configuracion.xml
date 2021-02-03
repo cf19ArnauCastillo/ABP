@@ -32,7 +32,7 @@
             android:id="@+id/button12"
             android:layout_width="174dp"
             android:layout_height="56dp"
-            android:text="Button"
+            android:text="Cambiar Idioma"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
             android:id="@+id/button13"
             android:layout_width="174dp"
             android:layout_height="56dp"
-            android:text="Button"
+            android:text="Notificaciones"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
@@ -55,7 +55,7 @@
             android:id="@+id/button14"
             android:layout_width="174dp"
             android:layout_height="56dp"
-            android:text="Button"
+            android:text="Ayuda"
             tools:layout_editor_absoluteX="118dp"
             tools:layout_editor_absoluteY="495dp" />
 
@@ -63,7 +63,7 @@
             android:id="@+id/button15"
             android:layout_width="174dp"
             android:layout_height="56dp"
-            android:text="Button"
+            android:text="about us"
             tools:layout_editor_absoluteX="118dp"
             tools:layout_editor_absoluteY="585dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
