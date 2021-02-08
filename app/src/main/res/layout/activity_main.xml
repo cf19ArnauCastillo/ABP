@@ -45,40 +45,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="257dp"
-        android:layout_height="120dp"
-        android:src="@drawable/common_google_signin_btn_text_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.773" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="72dp"
-        android:layout_height="64dp"
-        android:src="@drawable/googleg_standard_color_18"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.294"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="121dp"
-        android:layout_height="59dp"
-        android:text="Sign in"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.686"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.748" />
 </androidx.constraintlayout.widget.ConstraintLayout>
