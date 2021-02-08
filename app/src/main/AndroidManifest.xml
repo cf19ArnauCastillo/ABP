@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ABP">
-        <activity android:name=".Recopilador"></activity>
+        <activity
+            android:name=".Menu_desplegable"
+            android:label="@string/title_activity_menu_desplegable"
+            android:theme="@style/Theme.ABP.NoActionBar"></activity>
         <activity android:name=".Menu" />
         <activity android:name=".MainActivity">
             <intent-filter>
