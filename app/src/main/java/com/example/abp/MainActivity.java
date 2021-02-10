@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -24,10 +23,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class GoogleSignInActivity extends AppCompatActivity {
+
+
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 0;
+
+    SignInButton btnGoogle;
 
     private FirebaseAuth mAuth;
 
@@ -39,8 +42,8 @@ public class GoogleSignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    SignInButton btnGoogle = findViewById(R.id.sign_in_button);
-        btnGoogle.setSize(SignInButton.SIZE_ICON_ONLY);
+    btnGoogle = findViewById(R.id.sign_in_button);
+    btnGoogle.setSize(SignInButton.SIZE_ICON_ONLY);
 
     mAuth = FirebaseAuth.getInstance();
 

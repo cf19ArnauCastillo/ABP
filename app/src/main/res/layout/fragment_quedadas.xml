@@ -14,7 +14,7 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="73dp"
             android:text="Alberto ha saloicitado quedar contigo para jugar Ajedrez!"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,11 +23,12 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="163dp"
-            android:layout_height="140dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_marginTop="75dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
-            tools:layout_editor_absoluteX="124dp"
             tools:src="@tools:sample/avatars" />
 
         <Button
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="100dp"
             android:text="Aceptar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView6" />
@@ -45,7 +46,7 @@
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="100dp"
             android:layout_marginEnd="60dp"
             android:layout_marginRight="60dp"
             android:text="Rechazar"
