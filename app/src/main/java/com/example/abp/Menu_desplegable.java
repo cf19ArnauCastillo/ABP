@@ -77,7 +77,7 @@ public class Menu_desplegable extends AppCompatActivity {
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Quedadas()).commit();
         }
         if(id == R.id.mapa){
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Mapa()).commit();
+            fragmentManager.beginTransaction().replace(R.id.contenedor, new MapsFragment()).commit();
         }
         if(id == R.id.chat){
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Chat()).commit();
