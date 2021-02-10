@@ -35,7 +35,7 @@ public class Menu_desplegable extends AppCompatActivity {
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, "Open navigation drawer", "Close navigation drawer");
+                this, drawer, toolbar, R.string.Menu_open, R.string.Menu_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
