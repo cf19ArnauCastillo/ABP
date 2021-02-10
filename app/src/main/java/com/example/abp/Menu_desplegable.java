@@ -43,7 +43,7 @@ public class Menu_desplegable extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
 
         FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.contenedor, new Chat()).commit();
+        fragmentManager.beginTransaction().replace(R.id.contenedor, new Perfil()).commit();
     }
     @Override
     public void onBackPressed() {
