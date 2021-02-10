@@ -108,7 +108,7 @@ public class GoogleSignInActivity extends AppCompatActivity {
     }
 
     public void goTo(){
-        Intent intent = new Intent(this, Perfil.class);
+        Intent intent = new Intent(this, Menu_desplegable.class);
         startActivity(intent);
     }
 
