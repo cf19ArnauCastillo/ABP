@@ -40,30 +40,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        btnGoogle = findViewById(R.id.sign_in_button);
+        btnGoogle.setSize(SignInButton.SIZE_ICON_ONLY);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+            btnGoogle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                signIn();
+            }
+        });
+
     }
-
-    btnGoogle = findViewById(R.id.sign_in_button);
-    btnGoogle.setSize(SignInButton.SIZE_ICON_ONLY);
-
-    mAuth = FirebaseAuth.getInstance();
-
-    // Configure Google Sign In
-    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build();
-
-    // Build a GoogleSignInClient with the options specified by gso.
-    mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        btnGoogle.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View view){
-            signIn();
-        }
-    });
-
-}
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
