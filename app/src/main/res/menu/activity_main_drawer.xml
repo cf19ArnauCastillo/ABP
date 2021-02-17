@@ -8,6 +8,9 @@
             android:id="@+id/quedadas"
             android:title="QUEDADAS" />
         <item
+            android:id="@+id/crear"
+            android:title="CREAR QUEDADA" />
+        <item
             android:id="@+id/mapa"
             android:title="MAPA" />
         <item
