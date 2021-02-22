@@ -9,34 +9,44 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.abp.Objects.Quedada;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class MapsFragment extends Fragment {
+    private DatabaseReference RefQuedadas;
+    private ArrayList<Quedada> Quedadas;
+    double Lat;
+    double lon;
 
-    private OnMapReadyCallback callback = new OnMapReadyCallback() {
-
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
+    ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
-        public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            Quedadas.clear();
+            if (dataSnapshot.exists()){
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Quedada quedada = snapshot.getValue(Quedada.class);
+                    Quedadas.add(quedada);
+                }
+            }
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
         }
     };
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -50,8 +60,23 @@ public class MapsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(callback);
-        }
+
+        RefQuedadas = (DatabaseReference) FirebaseDatabase.getInstance().getReference("Quedadas")
+                .orderByChild("id");
+        RefQuedadas.addListenerForSingleValueEvent(valueEventListener);
+
+        mapFragment.getMapAsync(new OnMapReadyCallback() {
+            MarkerOptions markerOptions = new MarkerOptions();
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                for (int i = 0; i == Quedadas.size(); i++){
+                    Lat = Quedadas.get(i).getLatitud();
+                    lon = Quedadas.get(i).getLongitud();
+                    LatLng location = new LatLng(Lat, lon);
+                    markerOptions.position(location);
+                }
+
+            }
+        });
     }
 }
