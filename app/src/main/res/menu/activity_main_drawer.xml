@@ -8,19 +8,16 @@
             android:id="@+id/quedadas"
             android:title="QUEDADAS" />
         <item
-            android:id="@+id/crear"
+            android:id="@+id/crearQuedada"
             android:title="CREAR QUEDADA" />
         <item
-            android:id="@+id/mapa"
+            android:id="@+id/mapsFragment"
             android:title="MAPA" />
         <item
             android:id="@+id/chat"
             android:title="CHAT" />
         <item
-            android:id="@+id/perfil"
-            android:title="PERFIL" />
-        <item
-            android:id="@+id/config"
+            android:id="@+id/configuracion"
             android:title="CONFIGURACION" />
     </group>
 </menu>

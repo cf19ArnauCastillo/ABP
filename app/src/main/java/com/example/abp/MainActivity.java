@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
             btnGoogle.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                signIn();
+                goTo();
+                //signIn();
             }
         });
 

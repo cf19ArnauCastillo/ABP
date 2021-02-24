@@ -3,23 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/chat">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.abp.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
+        android:id="@+id/mapsFragment"
+        android:name="com.example.abp.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.abp.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
+        android:id="@+id/chat"
+        android:name="com.example.abp.Chat"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.abp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/configuracion"
+        android:name="com.example.abp.Configuracion"
+        android:label="fragment_configuracion"
+        tools:layout="@layout/fragment_configuracion" />
+    <fragment
+        android:id="@+id/crearQuedada"
+        android:name="com.example.abp.CrearQuedada"
+        android:label="fragment_crear_quedada"
+        tools:layout="@layout/fragment_crear_quedada" />
+    <fragment
+        android:id="@+id/quedadas"
+        android:name="com.example.abp.Quedadas"
+        android:label="fragment_quedadas"
+        tools:layout="@layout/fragment_quedadas" />
 </navigation>

@@ -15,8 +15,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 public class Menu_desplegable extends AppCompatActivity {
+
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +30,6 @@ public class Menu_desplegable extends AppCompatActivity {
         setContentView(R.layout.activity_menu_desplegable);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,62 +39,24 @@ public class Menu_desplegable extends AppCompatActivity {
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.Menu_open, R.string.Menu_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
-
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.contenedor, new Perfil()).commit();
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.quedadas, R.id.crearQuedada, R.id.mapsFragment, R.id.chat, R.id.configuracion)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.contenedor);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
     }
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
     public boolean onCreateOptionMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_desplegable, menu);
         return true;
     }
+
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-        if (id == R.id.action_settings){
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    @SuppressWarnings("StatementWithEmptyBody")
-    public boolean onNavigationSelected(MenuItem item){
-        int id = item.getItemId();
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        if(id == R.id.quedadas){
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Quedadas()).commit();
-        }
-        if(id == R.id.mapa){
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new MapsFragment()).commit();
-        }
-        if(id == R.id.chat){
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Chat()).commit();
-        }
-        if(id == R.id.perfil){
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Perfil()).commit();
-        }
-        if(id == R.id.config){
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Configuracion()).commit();
-        }
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+    public boolean onSupportNavigateUp(){
+        NavController navController = Navigation.findNavController(this, R.id.contenedor);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                ||super.onSupportNavigateUp();
     }
 }
