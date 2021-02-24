@@ -55,17 +55,22 @@
             android:id="@+id/button14"
             android:layout_width="174dp"
             android:layout_height="56dp"
+            android:layout_marginTop="492dp"
             android:text="Ayuda"
-            tools:layout_editor_absoluteX="118dp"
-            tools:layout_editor_absoluteY="495dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button15"
             android:layout_width="174dp"
             android:layout_height="56dp"
+            android:layout_marginTop="584dp"
             android:text="about us"
-            tools:layout_editor_absoluteX="118dp"
-            tools:layout_editor_absoluteY="585dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
