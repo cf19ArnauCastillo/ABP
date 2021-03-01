@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/chat"
-        android:name="com.example.abp.Chat"
+        android:name="com.example.abp.Chat.Chat"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
