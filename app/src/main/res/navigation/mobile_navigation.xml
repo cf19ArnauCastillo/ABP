@@ -16,11 +16,6 @@
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
-        android:id="@+id/configuracion"
-        android:name="com.example.abp.Configuracion"
-        android:label="fragment_configuracion"
-        tools:layout="@layout/fragment_configuracion" />
-    <fragment
         android:id="@+id/crearQuedada"
         android:name="com.example.abp.CrearQuedada"
         android:label="fragment_crear_quedada"
@@ -30,4 +25,19 @@
         android:name="com.example.abp.Quedadas"
         android:label="fragment_quedadas"
         tools:layout="@layout/fragment_quedadas" />
+    <fragment
+        android:id="@+id/configFragment_AboutUs"
+        android:name="com.example.abp.ConfigFragment_AboutUs"
+        android:label="fragment_config__about_us"
+        tools:layout="@layout/fragment_config__about_us" />
+    <fragment
+        android:id="@+id/configFragment_Ajuda"
+        android:name="com.example.abp.ConfigFragment_Ajuda"
+        android:label="fragment_config__ajuda"
+        tools:layout="@layout/fragment_config__ajuda" />
+    <fragment
+        android:id="@+id/configFragment_Idioma"
+        android:name="com.example.abp.ConfigFragment_Idioma"
+        android:label="fragment_config__idioma"
+        tools:layout="@layout/fragment_config__idioma" />
 </navigation>

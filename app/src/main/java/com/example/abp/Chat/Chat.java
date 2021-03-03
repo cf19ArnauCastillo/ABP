@@ -37,7 +37,7 @@ public class Chat extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        /*FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
 
         escribir=(EditText) getView().findViewById(R.id.escribir);
@@ -73,7 +73,7 @@ public class Chat extends Fragment {
                 // Failed to read value
                 Log.i("logTest", "Failed to read value.", error.toException());
             }
-        });
+        });*/
         return inflater.inflate(R.layout.fragment_chat, container, false);
     }
 }
