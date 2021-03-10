@@ -102,14 +102,6 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            String name = user.getDisplayName();
-                            String email = user.getEmail();
-                            Uri photoUrl = user.getPhotoUrl();
-
-                            User user1 = new User(email, name, photoUrl);
-                            //mDatabase.child("Usuario").child(id).setValue(user1);
-                            //updateUI(user);
                             goTo();
                         } else {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
