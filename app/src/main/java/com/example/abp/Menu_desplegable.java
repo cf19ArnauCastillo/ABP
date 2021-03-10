@@ -9,12 +9,19 @@ import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.abp.Objects.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
@@ -26,10 +33,14 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.ArrayList;
+
 public class Menu_desplegable extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    ArrayList<String> correos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +72,29 @@ public class Menu_desplegable extends AppCompatActivity {
         mail.setText(email);
         photo.setImageURI(photoUrl);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference Usuario = mDatabase.child("Usuario");
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    String correo = ds.getKey();
+                    correos.add(correo);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        };
+        Usuario.addListenerForSingleValueEvent(eventListener);
+        for (int i = 0;i==correos.size();i++){
+            String correo = correos.get(i);
+            if (correo != email){
+                User usuario = new User(name, email);
+                mDatabase.child("Usuario").setValue(usuario);
+            }
+        }
     }
     public boolean onCreateOptionMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_desplegable, menu);
