@@ -88,12 +88,20 @@ public class Menu_desplegable extends AppCompatActivity {
             }
         };
         Usuario.addListenerForSingleValueEvent(eventListener);
-        for (int i = 0;i==correos.size();i++){
+        boolean detector = true;
+        int tamano = correos.size();
+        for (int i = 0;i==tamano;i++){
             String correo = correos.get(i);
-            if (correo != email){
-                User usuario = new User(name, email);
-                mDatabase.child("Usuario").setValue(usuario);
+            if (correo == email){
+                break;
             }
+            if (correo != email && i == tamano) {
+                detector = false;
+            }
+        }
+        if (detector = false){
+            User usuario = new User(name, email);
+            mDatabase.child("Usuario").setValue(usuario);
         }
     }
     public boolean onCreateOptionMenu(Menu menu){
