@@ -3,19 +3,21 @@ package com.example.abp.Objects;
 import java.util.Date;
 
 public class Quedada {
-    protected int id;
+    protected String id;
     protected Date horario;
     protected double latitud;
     protected double longitud;
+    protected String aficion;
 
-    public Quedada(int id, Date horario, double latitud, double longitud){
+    public Quedada(String id, Date horario, double latitud, double longitud, String aficion){
         this.id = id;
         this.horario = horario;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.aficion = aficion;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -30,4 +32,6 @@ public class Quedada {
     public double getLongitud() {
         return longitud;
     }
+
+    public String getAficion(){ return aficion; }
 }

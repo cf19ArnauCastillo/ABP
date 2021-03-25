@@ -59,7 +59,7 @@ public class Menu_desplegable extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        FirebaseUser user = mAuth.getCurrentUser();
+        /*FirebaseUser user = mAuth.getCurrentUser();
         TextView nombre = findViewById(R.id.name);
         TextView mail = findViewById(R.id.mail);
         ImageView photo = findViewById(R.id.foto);
@@ -102,7 +102,7 @@ public class Menu_desplegable extends AppCompatActivity {
         if (detector = false){
             User usuario = new User(name, email);
             mDatabase.child("Usuario").setValue(usuario);
-        }
+        }*/
     }
     public boolean onCreateOptionMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_desplegable, menu);

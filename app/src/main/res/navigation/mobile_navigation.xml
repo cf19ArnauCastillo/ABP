@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_crear_quedada" />
     <fragment
         android:id="@+id/quedadas"
-        android:name="com.example.abp.Quedadas"
+        android:name="com.example.abp.FragmentQuedadas.Quedadas"
         android:label="fragment_quedadas"
         tools:layout="@layout/fragment_quedadas" />
     <fragment
