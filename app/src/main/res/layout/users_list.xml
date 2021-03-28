@@ -6,10 +6,12 @@
     android:layout_height="wrap_content">
 
     <Button
-        android:id="@+id/Usuarios"
-        android:layout_width="wrap_content"
+        android:id="@+id/UsuariosBtt"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="clickUser"
         android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

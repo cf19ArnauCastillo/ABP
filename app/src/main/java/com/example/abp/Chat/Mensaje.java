@@ -1,14 +1,11 @@
 package com.example.abp.Chat;
 
-public class mensaje {
-
+public class Mensaje {
     public String escribir1;
 
-    public mensaje(){
-
+    public Mensaje(){
     }
-
-    public mensaje(String escribir1){
+    public Mensaje(String escribir1){
         this.escribir1 = escribir1;
     }
 
@@ -20,3 +17,4 @@ public class mensaje {
         this.escribir1 = escribir1;
     }
 }
+
