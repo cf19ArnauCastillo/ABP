@@ -1,7 +1,6 @@
 package com.example.abp.FragmentQuedadas;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -40,7 +39,31 @@ public class Quedadas extends Fragment {
         Button btnSearch = findViewById(R.id.BotonCrearQuedadas);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showTxtSearch();
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.setTitle("Añade quedada");
+
+                final EditText input = new EditText(this);
+                input.setHint("Nombre de aficion");
+                alert.setView(input);
+
+                final EditText input = new EditText(this);
+                input.setHint("Horario");
+                alert.setView(input);
+
+                alert.setPositiveButton("Confirma", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String movie = input.getText().toString();
+                        fetchData process = new fetchData(text,this);
+                        process.execute();
+                    }
+                });
+
+                alert.setNegativeButton("Cancela", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Canceled.
+                    }
+                });
+                alert.show();
             }
 
         ValueEventListener valueEventListener = new ValueEventListener() {
@@ -69,32 +92,4 @@ public class Quedadas extends Fragment {
 
         return inflater.inflate(R.layout.fragment_quedadas, container, false);
     }
-
-        public void showTxtSearch(){
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Añade quedada");
-
-            final EditText input = new EditText(this);
-            input.setHint("Nombre de aficion");
-            alert.setView(input);
-
-            final EditText input = new EditText(this);
-            input.setHint("Horario");
-            alert.setView(input);
-
-            alert.setPositiveButton("Confirma", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    String movie = input.getText().toString();
-                    fetchData process = new fetchData(text,this);
-                    process.execute();
-                }
-            });
-
-            alert.setNegativeButton("Cancela", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    // Canceled.
-                }
-            });
-            alert.show();
-        }
 }
