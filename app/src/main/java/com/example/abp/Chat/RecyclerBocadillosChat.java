@@ -14,10 +14,10 @@ import java.util.ArrayList;
 
 public class RecyclerBocadillosChat extends RecyclerView.Adapter<RecyclerBocadillosChat.ViewHolder>{
 
-    private ArrayList<Mensaje> Mensajes;
+    private ArrayList<mensaje> mensajes;
 
-    public RecyclerBocadillosChat(ArrayList<Mensaje> arrayMissatges ){
-        this.Mensajes = arrayMissatges;
+    public RecyclerBocadillosChat(ArrayList<mensaje> arrayMissatges ){
+        this.mensajes = arrayMissatges;
     }
 
     @NonNull
@@ -31,12 +31,12 @@ public class RecyclerBocadillosChat extends RecyclerView.Adapter<RecyclerBocadil
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.etiquetaMissatge.setText(Mensajes.get(position).getmensaje());
+        holder.etiquetaMissatge.setText(mensajes.get(position).getmensaje());
     }
 
     @Override
     public int getItemCount() {
-        return Mensajes.size();
+        return mensajes.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -45,8 +45,7 @@ public class RecyclerBocadillosChat extends RecyclerView.Adapter<RecyclerBocadil
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            etiquetaMissatge = itemView.findViewById(R.id.txtMisatge);
+            etiquetaMissatge = itemView.findViewById(R.id.txtMissatge);
         }
     }
-
 }

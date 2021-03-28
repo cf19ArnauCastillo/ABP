@@ -1,11 +1,7 @@
 package com.example.abp.Chat;
 
-public class Usuario {
+public class usuario {
     private String nombre;
-
-    public Usuario(String nombre){
-        this.nombre = nombre;
-    }
 
     public String getNombre() {
         return nombre;

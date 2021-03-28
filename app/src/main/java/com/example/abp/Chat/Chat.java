@@ -1,13 +1,16 @@
 package com.example.abp.Chat;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -20,74 +23,34 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Chat extends AppCompatActivity {
+public class Chat extends Fragment {
 
     EditText escribir;
     Button enviar;
     String escribir1;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    DatabaseReference dbUsuarios;
 
-    ArrayList<Mensaje> mensajes;
-    ArrayList<Usuario> usuarios;
-
-    public Context context;
+    ArrayList<mensaje> mensajes;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        /*FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
-        DatabaseReference dbUsuarios = database.getReference("UsuariosXat");
 
-        escribir=(EditText)findViewById(R.id.escribir);
-        enviar=(Button) findViewById(R.id.enviar);
+        escribir=(EditText) getView().findViewById(R.id.escribir);
+        enviar=(Button) getView().findViewById(R.id.enviar);
         escribir1="";
-        mensajes = new ArrayList<Mensaje>();
-        usuarios = new ArrayList<Usuario>();
+        mensajes = new ArrayList<mensaje>();
 
         enviar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-
-                Mensaje mensaje = new Mensaje(escribir.getText().toString());
+                mensaje mensaje = new mensaje(escribir.getText().toString());
                 mensajes.add(mensaje);
 
                 myRef.setValue(mensajes);
-
-                //usuarios.add(usuario);
-                //myRef2.setValue(usuarios);
-            }
-        });
-
-
-        dbUsuarios.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.i("logTest " ,""+dataSnapshot.getChildrenCount());
-
-                usuarios.clear();
-
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Log.i("logTest", postSnapshot.getKey());
-
-                    Usuario usuario = new Usuario(postSnapshot.getKey());
-                    usuarios.add(usuario);
-                }
-
-                RecyclerView recycler= findViewById(R.id.recyclerUsuarios);
-                recycler.setAdapter(new RecyclerNombreUsuarios(usuarios, context));
-                recycler.setLayoutManager(new LinearLayoutManager((context)));
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.i("logTest", "Failed to read value.", error.toException());
             }
         });
 
@@ -99,13 +62,10 @@ public class Chat extends AppCompatActivity {
                 mensajes.clear();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Mensaje mensaje = postSnapshot.getValue(Mensaje.class);
+                    mensaje mensaje = postSnapshot.getValue(mensaje.class);
                     mensajes.add(mensaje);
                     Log.i("logTest",mensaje.getmensaje());
                 }
-                RecyclerView recycler= findViewById(R.id.bocadilloschat);
-                recycler.setAdapter(new RecyclerBocadillosChat(mensajes));
-                recycler.setLayoutManager(new LinearLayoutManager((context)));
             }
 
             @Override
@@ -113,6 +73,7 @@ public class Chat extends AppCompatActivity {
                 // Failed to read value
                 Log.i("logTest", "Failed to read value.", error.toException());
             }
-        });
+        });*/
+        return inflater.inflate(R.layout.fragment_chat, container, false);
     }
 }
