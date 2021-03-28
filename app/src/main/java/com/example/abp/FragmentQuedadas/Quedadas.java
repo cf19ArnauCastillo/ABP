@@ -1,5 +1,7 @@
 package com.example.abp.FragmentQuedadas;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.abp.Objects.Quedada;
 import com.example.abp.R;
@@ -32,6 +36,12 @@ public class Quedadas extends Fragment {
         mRecyclerView = mRecyclerView.findViewById(R.id.recyclerviewQuedadas);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         lista = new ArrayList<Quedada>();
+
+        Button btnSearch = findViewById(R.id.BotonCrearQuedadas);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showTxtSearch();
+            }
 
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
@@ -59,4 +69,32 @@ public class Quedadas extends Fragment {
 
         return inflater.inflate(R.layout.fragment_quedadas, container, false);
     }
+
+        public void showTxtSearch(){
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Añade quedada");
+
+            final EditText input = new EditText(this);
+            input.setHint("Nombre de aficion");
+            alert.setView(input);
+
+            final EditText input = new EditText(this);
+            input.setHint("Horario");
+            alert.setView(input);
+
+            alert.setPositiveButton("Confirma", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    String movie = input.getText().toString();
+                    fetchData process = new fetchData(text,this);
+                    process.execute();
+                }
+            });
+
+            alert.setNegativeButton("Cancela", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    // Canceled.
+                }
+            });
+            alert.show();
+        }
 }
