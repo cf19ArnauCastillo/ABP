@@ -38,21 +38,21 @@ import java.util.ArrayList;
 public class Menu_desplegable extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
-    ArrayList<String> correos;
+    //private FirebaseAuth mAuth;
+    //private DatabaseReference mDatabase;
+    //ArrayList<String> correos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_desplegable);
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.quedadas, R.id.crearQuedada, R.id.mapsFragment, R.id.chat, R.id.configFragment_Idioma, R.id.configFragment_AboutUs, R.id.configFragment_Ajuda)
+                R.id.quedadas, R.id.mapsFragment, R.id.chat, R.id.configFragment_Idioma, R.id.configFragment_AboutUs, R.id.configFragment_Ajuda)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.contenedor);

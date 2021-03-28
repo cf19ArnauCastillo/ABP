@@ -16,7 +16,6 @@ public class Quedada {
         this.longitud = longitud;
         this.aficion = aficion;
     }
-
     public String getId() {
         return id;
     }

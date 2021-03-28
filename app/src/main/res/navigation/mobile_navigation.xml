@@ -16,11 +16,6 @@
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
-        android:id="@+id/crearQuedada"
-        android:name="com.example.abp.CrearQuedada"
-        android:label="fragment_crear_quedada"
-        tools:layout="@layout/fragment_crear_quedada" />
-    <fragment
         android:id="@+id/quedadas"
         android:name="com.example.abp.FragmentQuedadas.Quedadas"
         android:label="fragment_quedadas"

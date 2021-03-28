@@ -44,6 +44,7 @@ public class MapsFragment extends Fragment {
     private static final int MY_REQUEST_INT = 1;
     private DatabaseReference mDatabase;
     ArrayList<Quedada> quedadas = new ArrayList<>();
+    private Quedada quedada;
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
         public void onMapReady(GoogleMap googleMap) {
@@ -51,25 +52,28 @@ public class MapsFragment extends Fragment {
             mDatabase = FirebaseDatabase.getInstance().getReference("Quedadas");
             mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot ds) {
-                    String id = (String) ds.child("ID").getValue();
-                    String aficion = (String) ds.child("Aficion").getValue();
-                    String hora = (String) ds.child("Horario").getValue();
-                    Date horario = null;
-                    try {
-                        horario = new SimpleDateFormat("dd/MM/yyyy").parse(hora);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    double lat = (double) ds.child("Latitud").getValue();
-                    double lon = (double) ds.child("Longitud").getValue();
-                    quedadas.add(new Quedada(id, horario, lat, lon, aficion));
-                    for (int i = 0; i < quedadas.size(); i++) {
-                        LatLng pos = new LatLng(quedadas.get(i).getLatitud(), quedadas.get(i).getLongitud());
-                        googleMap.addMarker(new MarkerOptions()
-                                .position(pos));
-                        googleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getActivity()), quedadas.get(i).getAficion(), quedadas.get(i).getHorario().toString()));
-                    }
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    quedadas.clear();
+                    //for (DataSnapshot snapshot : ds.getChildren()) {
+                        String id = (String) snapshot.child("ID").getValue();
+                        String aficion = (String) snapshot.child("Aficion").getValue();
+                        String hora = (String) snapshot.child("Horario").getValue();
+                        Date horario = null;
+                        try {
+                            horario = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(hora);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        double lat = (double) snapshot.child("Latitud").getValue();
+                        double lon = (double) snapshot.child("Longitud").getValue();
+                        quedadas.add(new Quedada(id, horario, lat, lon, aficion));
+                        for (int i = 0; i < quedadas.size(); i++) {
+                            LatLng pos = new LatLng(quedadas.get(i).getLatitud(), quedadas.get(i).getLongitud());
+                            googleMap.addMarker(new MarkerOptions()
+                                    .position(pos));
+                            googleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getActivity()), quedadas.get(i).getAficion(), quedadas.get(i).getHorario().toString()));
+                        }
+                    //}
                 }
 
                 @Override
@@ -107,5 +111,8 @@ public class MapsFragment extends Fragment {
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
+    }
+    public void transfer(Quedada quedada){
+        this.quedada = quedada;
     }
 }

@@ -2,6 +2,7 @@ package com.example.abp.FragmentQuedadas;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.example.abp.Objects.Quedada;
 import com.example.abp.R;
@@ -23,75 +25,61 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Quedadas extends Fragment {
-    ArrayList<Quedada> lista;
-    RecyclerView mRecyclerView;
-    private DatabaseReference RefQuedadas;
+    RecyclerView rv;
+    List<Quedada> quedadas;
+
+    com.example.abp.FragmentQuedadas.Adapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_quedadas,container,false);
-        mRecyclerView = mRecyclerView.findViewById(R.id.recyclerviewQuedadas);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        lista = new ArrayList<Quedada>();
+        View v = inflater.inflate(R.layout.fragment_quedadas, container, false);
+        rv = (RecyclerView) v.findViewById(R.id.recyclerviewQuedadas);
 
-        Button btnSearch = v.findViewById(R.id.BotonCrearQuedadas);
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-                alert.setTitle("Añade quedada");
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
 
-                final EditText input = new EditText(getContext());
-                input.setHint("Nombre de aficion");
-                alert.setView(input);
+        quedadas = new ArrayList<>();
 
-                final EditText input2 = new EditText(getContext());
-                input2.setHint("Horario");
-                alert.setView(input2);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-                alert.setPositiveButton("Confirma", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        String aficion = input.getText().toString();
-                        String horario = input2.getText().toString();
+        adapter = new Adapter(quedadas);
 
+        rv.setAdapter(adapter);
+
+        database.getReference().child("Quedadas").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    quedadas.removeAll(quedadas);
+                    //for (DataSnapshot snapshot : datasnapshot.getChildren()) {
+                    String id = (String) snapshot.child("ID").getValue();
+                    String aficion = (String) snapshot.child("Aficion").getValue();
+                    String hora = (String) snapshot.child("Horario").getValue();
+                    Date horario = null;
+                    try {
+                        horario = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(hora);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
                     }
-                });
-
-                alert.setNegativeButton("Cancela", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        // Canceled.
-                    }
-                });
-                alert.show();
+                    double lat = (double) snapshot.child("Latitud").getValue();
+                    double lon = (double) snapshot.child("Longitud").getValue();
+                    quedadas.add(new Quedada(id, horario, lat, lon, aficion));
+                    adapter.notifyDataSetChanged();
+                    //}
             }
-            });
 
-            ValueEventListener valueEventListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    lista.clear();
-                    if (dataSnapshot.exists()) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            Quedada quedada = snapshot.getValue(Quedada.class);
-                            lista.add(quedada);
-                        }
-                    }
-                }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            };
-            RefQuedadas =(DatabaseReference)FirebaseDatabase.getInstance().getReference("Quedadas").orderByChild("id");
-        RefQuedadas.addListenerForSingleValueEvent(valueEventListener);
-
-            QuedadasAdapter adapter = new QuedadasAdapter(lista);
-        mRecyclerView.setAdapter(adapter);
-
+            }
+        });
         return v;
     }
+
 }
