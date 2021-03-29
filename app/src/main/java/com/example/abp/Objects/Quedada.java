@@ -4,12 +4,16 @@ import java.util.Date;
 
 public class Quedada {
     protected String id;
-    protected Date horario;
+    protected String horario;
     protected double latitud;
     protected double longitud;
     protected String aficion;
 
-    public Quedada(String id, Date horario, double latitud, double longitud, String aficion){
+    public Quedada(){
+
+    }
+
+    public Quedada(String id, String horario, double latitud, double longitud, String aficion){
         this.id = id;
         this.horario = horario;
         this.latitud = latitud;
@@ -20,7 +24,7 @@ public class Quedada {
         return id;
     }
 
-    public Date getHorario() {
+    public String getHorario() {
         return horario;
     }
 

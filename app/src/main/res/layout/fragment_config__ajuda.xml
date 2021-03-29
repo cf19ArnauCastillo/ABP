@@ -15,6 +15,7 @@
             android:id="@+id/textView6"
             android:layout_width="296dp"
             android:layout_height="558dp"
+            android:gravity="center"
             android:text="Si tens problemes amb l'utilització de la nostre app, pots contactar als nostres correus en l'apartat sobre nosaltres o accedir a la nostra (futura) pàgina web on estan disponibles totes les novetats relacionades amb l'app i més !"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -1,6 +1,7 @@
 package com.example.abp.FragmentQuedadas;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +19,14 @@ import com.example.abp.MapsFragment;
 import com.example.abp.Objects.Quedada;
 import com.example.abp.R;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 class Adapter extends RecyclerView.Adapter<Adapter.QuedadasviewHolder> {
-    List<Quedada> quedadas;
+    ArrayList<Quedada> quedadas;
 
-    public Adapter(List<Quedada> quedadas){
+    public Adapter(ArrayList<Quedada> quedadas){
         this.quedadas = quedadas;
     }
     @NonNull
@@ -37,9 +39,9 @@ class Adapter extends RecyclerView.Adapter<Adapter.QuedadasviewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull QuedadasviewHolder holder, int position) {
-        Quedada quedada = quedadas.get(position);
-        holder.aficion.setText(quedada.getAficion());
-        holder.horario.setText(quedada.getHorario().toString());
+        Log.i("logtest", quedadas.size()+"");
+        holder.aficion.setText(quedadas.get(position).getAficion());
+        holder.horario.setText(quedadas.get(position).getHorario());
         holder.location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

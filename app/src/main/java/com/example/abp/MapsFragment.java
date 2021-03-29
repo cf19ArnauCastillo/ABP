@@ -43,38 +43,26 @@ import java.util.SimpleTimeZone;
 public class MapsFragment extends Fragment {
     private static final int MY_REQUEST_INT = 1;
     private DatabaseReference mDatabase;
-    ArrayList<Quedada> quedadas = new ArrayList<>();
+    ArrayList<Quedada> quedadas = new ArrayList<Quedada>();
     private Quedada quedada;
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
         public void onMapReady(GoogleMap googleMap) {
-
             mDatabase = FirebaseDatabase.getInstance().getReference("Quedadas");
             mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                     quedadas.clear();
-                    //for (DataSnapshot snapshot : ds.getChildren()) {
-                        String id = (String) snapshot.child("ID").getValue();
-                        String aficion = (String) snapshot.child("Aficion").getValue();
-                        String hora = (String) snapshot.child("Horario").getValue();
-                        Date horario = null;
-                        try {
-                            horario = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(hora);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        double lat = (double) snapshot.child("Latitud").getValue();
-                        double lon = (double) snapshot.child("Longitud").getValue();
-                        quedadas.add(new Quedada(id, horario, lat, lon, aficion));
-                        for (int i = 0; i < quedadas.size(); i++) {
-                            LatLng pos = new LatLng(quedadas.get(i).getLatitud(), quedadas.get(i).getLongitud());
-                            googleMap.addMarker(new MarkerOptions()
-                                    .position(pos));
-                            googleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getActivity()), quedadas.get(i).getAficion(), quedadas.get(i).getHorario().toString()));
-                        }
-                    //}
+                    for (DataSnapshot ps:datasnapshot.getChildren()){
+                        Quedada quedada = new Quedada((String)ps.child("id").getValue(),(String)ps.child("horario").getValue(),(double)ps.child("latitud").getValue(), (double)ps.child("longitud").getValue(), (String)ps.child("aficion").getValue());
+                        quedadas.add(quedada);
+
+                        googleMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(quedada.getLatitud(),quedada.getLongitud())));
+                        googleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getActivity()), quedada.getAficion(), quedada.getHorario()));
+                    }
                 }
+
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {

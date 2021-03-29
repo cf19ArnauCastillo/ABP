@@ -5,11 +5,11 @@ import android.net.Uri;
 import java.io.Serializable;
 
 public class User implements Serializable {
-
+    protected String id;
     protected String correo;
     protected String mote;
 
-    public User(String correo, String mote){
+    public User(String id, String correo, String mote){
         this.correo = correo;
         this.mote = mote;
     }
@@ -19,5 +19,6 @@ public class User implements Serializable {
     public String getCorreo() {
         return correo;
     }
+    public String getId(){return id;}
 
 }
