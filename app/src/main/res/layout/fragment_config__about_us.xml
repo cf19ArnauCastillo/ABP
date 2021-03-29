@@ -15,15 +15,17 @@
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="311dp"
-            android:layout_height="181dp"
+            android:layout_width="337dp"
+            android:layout_height="113dp"
+            android:fontFamily="casual"
+            android:gravity="center"
             android:text="Per obtindre més informació, consulta a :"
+            android:textColor="#FFFFFF"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.121" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
@@ -34,22 +36,22 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintHorizontal_bias="0.418"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.344" />
+            app:layout_constraintVertical_bias="0.65" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="360dp"
+            android:layout_marginBottom="188dp"
             android:text="cf19arnau.castillo@gmail.com"
             android:textColor="#536DFE"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -61,10 +63,26 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintHorizontal_bias="0.486"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.618" />
+            app:layout_constraintVertical_bias="0.815" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="387dp"
+            android:layout_height="201dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="Som un conjunt d'estudiants de DAM (Desenvolupament Aplicacions Multiplataforma), que han pensat un projecte, realitzat en aquesta app"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.186" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
