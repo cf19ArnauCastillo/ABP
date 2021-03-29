@@ -9,7 +9,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 
 import java.util.Date;
-
+/*
+        Hecho por: Cristian Montañés Escobar
+        Correo: cf19cristian.montanes@iesjoandaustria.org
+ */
 public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
     private static final String TAG = "CustomInfoWindowAdapter";
     private LayoutInflater inflater;

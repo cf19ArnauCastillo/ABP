@@ -22,7 +22,10 @@ import com.example.abp.R;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+/*
+        Hecho por: Cristian Montañés Escobar
+        Correo: cf19cristian.montanes@iesjoandaustria.org
+ */
 class Adapter extends RecyclerView.Adapter<Adapter.QuedadasviewHolder> {
     ArrayList<Quedada> quedadas;
 

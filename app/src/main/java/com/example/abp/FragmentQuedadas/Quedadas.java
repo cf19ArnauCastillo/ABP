@@ -34,11 +34,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+/*
+        Hecho por: Cristian Montañés Escobar
+        Correo: cf19cristian.montanes@iesjoandaustria.org
+ */
 public class Quedadas extends Fragment {
     RecyclerView rv;
     ArrayList<Quedada> quedadas = new ArrayList<Quedada>();
     Button add;
+    int contador=0;
     private DatabaseReference mDatabase;
 
     com.example.abp.FragmentQuedadas.Adapter adapter;
@@ -105,7 +109,11 @@ public class Quedadas extends Fragment {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        Quedada meet = new Quedada("001", hora, lat, lng, af);
+                        for (int i = 0;i<quedadas.size(); i++) {
+                            contador = contador + 1;
+                        }
+                        String count = String.valueOf(new Integer(contador+1));
+                        Quedada meet = new Quedada(count, hora, lat, lng, af);
                         quedadas.add(meet);
                         mDatabase.setValue(quedadas);
                     }
@@ -123,5 +131,4 @@ public class Quedadas extends Fragment {
 
         return v;
     }
-
 }

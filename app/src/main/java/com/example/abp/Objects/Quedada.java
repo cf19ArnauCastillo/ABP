@@ -1,13 +1,17 @@
 package com.example.abp.Objects;
 
 import java.util.Date;
-
+/*
+        Hecho por: Cristian Montañés Escobar
+        Correo: cf19cristian.montanes@iesjoandaustria.org
+ */
 public class Quedada {
     protected String id;
     protected String horario;
     protected double latitud;
     protected double longitud;
     protected String aficion;
+
 
     public Quedada(){
 

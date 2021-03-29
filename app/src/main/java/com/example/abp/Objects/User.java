@@ -8,10 +8,13 @@ public class User implements Serializable {
     protected String id;
     protected String correo;
     protected String mote;
+    protected String photo;
 
-    public User(String id, String correo, String mote){
+    public User(String id, String correo, String mote, String photo){
+        this.id = id;
         this.correo = correo;
         this.mote = mote;
+        this.photo = photo;
     }
     public String getMote() {
         return mote;
@@ -20,5 +23,6 @@ public class User implements Serializable {
         return correo;
     }
     public String getId(){return id;}
+    public String getPhoto(){return photo;}
 
 }

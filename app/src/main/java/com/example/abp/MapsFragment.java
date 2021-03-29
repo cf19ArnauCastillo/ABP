@@ -39,7 +39,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.SimpleTimeZone;
-
+/*
+        Hecho por: Cristian Montañés Escobar
+        Correo: cf19cristian.montanes@iesjoandaustria.org
+ */
 public class MapsFragment extends Fragment {
     private static final int MY_REQUEST_INT = 1;
     private DatabaseReference mDatabase;
@@ -60,6 +63,13 @@ public class MapsFragment extends Fragment {
                         googleMap.addMarker(new MarkerOptions()
                             .position(new LatLng(quedada.getLatitud(),quedada.getLongitud())));
                         googleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getActivity()), quedada.getAficion(), quedada.getHorario()));
+                        googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener(){
+
+                            @Override
+                            public void onInfoWindowClick(Marker marker) {
+                                mDatabase = FirebaseDatabase.getInstance().getReference("User");
+                            }
+                        });
                     }
                 }
 

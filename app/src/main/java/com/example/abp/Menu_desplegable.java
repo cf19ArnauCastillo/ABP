@@ -3,6 +3,7 @@ package com.example.abp;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -34,19 +35,20 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import java.util.ArrayList;
+/*
+        Hecho por: Cristian Montañés Escobar
+        Correo: cf19cristian.montanes@iesjoandaustria.org
+ */
 
 public class Menu_desplegable extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    //private FirebaseAuth mAuth;
-    //private DatabaseReference mDatabase;
-    //ArrayList<String> correos;
+    ArrayList<User> usuarios = new ArrayList<User>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_desplegable);
-        //mAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -59,50 +61,40 @@ public class Menu_desplegable extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        /*FirebaseUser user = mAuth.getCurrentUser();
-        TextView nombre = findViewById(R.id.name);
-        TextView mail = findViewById(R.id.mail);
-        ImageView photo = findViewById(R.id.foto);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("User");
 
-        String name = user.getDisplayName();
-        String email = user.getEmail();
-        Uri photoUrl = user.getPhotoUrl();
+        FirebaseUser usera = FirebaseAuth.getInstance().getCurrentUser();
+        String name = usera.getDisplayName();
+        String email = usera.getEmail();
+        Uri photo = usera.getPhotoUrl();
+        String uid = usera.getUid();
 
-        nombre.setText(name);
-        mail.setText(email);
-        photo.setImageURI(photoUrl);
-
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference Usuario = mDatabase.child("Usuario");
-        ValueEventListener eventListener = new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()){
-                    String correo = ds.getKey();
-                    correos.add(correo);
+                usuarios.clear();
+                for (DataSnapshot ds : snapshot.getChildren()){
+                    User user = new User((String)ds.child("id").getValue(), (String)ds.child("correo").getValue(), (String)ds.child("mote").getValue(), (String)ds.child("photo").getValue());
+                    usuarios.add(user);
                 }
+                User newuser = new User(uid, email, name, photo.toString());
+                usuarios.add(newuser);
+                ref.setValue(usuarios);
+                
+                TextView nombre = findViewById(R.id.name);
+                TextView mail = findViewById(R.id.mail);
+                ImageView foto = findViewById(R.id.foto);
+
+                nombre.setText(name);
+                mail.setText(email);
+                foto.setImageURI(photo);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
             }
-        };
-        Usuario.addListenerForSingleValueEvent(eventListener);
-        boolean detector = true;
-        int tamano = correos.size();
-        for (int i = 0;i==tamano;i++){
-            String correo = correos.get(i);
-            if (correo == email){
-                break;
-            }
-            if (correo != email && i == tamano) {
-                detector = false;
-            }
-        }
-        if (detector = false){
-            User usuario = new User(name, email);
-            mDatabase.child("Usuario").setValue(usuario);
-        }*/
+        });
     }
     public boolean onCreateOptionMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_desplegable, menu);
