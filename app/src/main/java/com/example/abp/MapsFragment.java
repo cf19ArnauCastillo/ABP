@@ -28,6 +28,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,11 +48,15 @@ import java.util.SimpleTimeZone;
 public class MapsFragment extends Fragment {
     private static final int MY_REQUEST_INT = 1;
     private DatabaseReference mDatabase;
+    String respuesta;
     ArrayList<Quedada> quedadas = new ArrayList<Quedada>();
     private Quedada quedada;
+    String ids = "hola";
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
         public void onMapReady(GoogleMap googleMap) {
+            FirebaseUser usera = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = usera.getUid();
             mDatabase = FirebaseDatabase.getInstance().getReference("Quedadas");
             mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -58,18 +64,30 @@ public class MapsFragment extends Fragment {
                     quedadas.clear();
                     for (DataSnapshot ps:datasnapshot.getChildren()){
                         Quedada quedada = new Quedada((String)ps.child("id").getValue(),(String)ps.child("horario").getValue(),(double)ps.child("latitud").getValue(), (double)ps.child("longitud").getValue(), (String)ps.child("aficion").getValue());
-                        quedadas.add(quedada);
+                        ids = String.valueOf(ps.child("ids").getValue());
+                        String[] leer = ids.split(" ");
+                        boolean iterador = false;
+                        for (String item:leer){
+                            if (item == uid){
+                                iterador = true;
+                                break;
+                            }
+                            else{
+                                iterador = false;
+                            }
+                        }
+                        if (iterador = false){
+                            respuesta = ids+" "+uid;
+                        }else{
+                            respuesta = ids;
+                        }
+                        Log.i("iterador", iterador+"");
 
                         googleMap.addMarker(new MarkerOptions()
                             .position(new LatLng(quedada.getLatitud(),quedada.getLongitud())));
                         googleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getActivity()), quedada.getAficion(), quedada.getHorario()));
-                        googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener(){
-
-                            @Override
-                            public void onInfoWindowClick(Marker marker) {
-                                mDatabase = FirebaseDatabase.getInstance().getReference("User");
-                            }
-                        });
+                        googleMap.setOnInfoWindowClickListener(marker -> quedada.setIds(respuesta));
+                        quedadas.add(quedada);
                     }
                 }
 

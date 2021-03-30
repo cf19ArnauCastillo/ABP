@@ -74,13 +74,10 @@ public class Menu_desplegable extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 usuarios.clear();
                 for (DataSnapshot ds : snapshot.getChildren()){
-                    User user = new User((String)ds.child("id").getValue(), (String)ds.child("correo").getValue(), (String)ds.child("mote").getValue(), (String)ds.child("photo").getValue());
+                    User user = new User((String)ds.child("id").getValue());
                     usuarios.add(user);
                 }
-                User newuser = new User(uid, email, name, photo.toString());
-                usuarios.add(newuser);
-                ref.setValue(usuarios);
-                
+
                 TextView nombre = findViewById(R.id.name);
                 TextView mail = findViewById(R.id.mail);
                 ImageView foto = findViewById(R.id.foto);

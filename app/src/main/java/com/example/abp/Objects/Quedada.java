@@ -1,6 +1,7 @@
 package com.example.abp.Objects;
 
-import java.util.Date;
+import java.util.ArrayList;
+
 /*
         Hecho por: Cristian Montañés Escobar
         Correo: cf19cristian.montanes@iesjoandaustria.org
@@ -11,6 +12,7 @@ public class Quedada {
     protected double latitud;
     protected double longitud;
     protected String aficion;
+    protected String ids;
 
 
     public Quedada(){
@@ -41,4 +43,9 @@ public class Quedada {
     }
 
     public String getAficion(){ return aficion; }
+
+    public void setIds(String ids){
+        this.ids = ids;
+    }
+    public String getIds(){return ids;}
 }
