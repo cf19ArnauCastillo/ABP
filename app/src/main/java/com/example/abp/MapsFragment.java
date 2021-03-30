@@ -46,6 +46,7 @@ import java.util.SimpleTimeZone;
         Correo: cf19cristian.montanes@iesjoandaustria.org
  */
 public class MapsFragment extends Fragment {
+    boolean iterador = false;
     private static final int MY_REQUEST_INT = 1;
     private DatabaseReference mDatabase;
     String respuesta;
@@ -64,29 +65,34 @@ public class MapsFragment extends Fragment {
                     quedadas.clear();
                     for (DataSnapshot ps:datasnapshot.getChildren()){
                         Quedada quedada = new Quedada((String)ps.child("id").getValue(),(String)ps.child("horario").getValue(),(double)ps.child("latitud").getValue(), (double)ps.child("longitud").getValue(), (String)ps.child("aficion").getValue());
-                        ids = String.valueOf(ps.child("ids").getValue());
-                        String[] leer = ids.split(" ");
-                        boolean iterador = false;
-                        for (String item:leer){
-                            if (item == uid){
-                                iterador = true;
-                                break;
-                            }
-                            else{
-                                iterador = false;
-                            }
-                        }
-                        if (iterador = false){
-                            respuesta = ids+" "+uid;
-                        }else{
-                            respuesta = ids;
-                        }
+
                         Log.i("iterador", iterador+"");
 
                         googleMap.addMarker(new MarkerOptions()
                             .position(new LatLng(quedada.getLatitud(),quedada.getLongitud())));
                         googleMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getActivity()), quedada.getAficion(), quedada.getHorario()));
-                        googleMap.setOnInfoWindowClickListener(marker -> quedada.setIds(respuesta));
+                        googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                            @Override
+                            public void onInfoWindowClick(Marker marker) {
+                                ids = String.valueOf(ps.child("ids").getValue());
+                                String[] leer = ids.split(" ");
+                                for (String item:leer){
+                                    if (item == uid){
+                                        iterador = true;
+                                        break;
+                                    }
+                                    else{
+                                        iterador = false;
+                                    }
+                                }
+                                if (iterador = false){
+                                    respuesta = ids+" "+uid;
+                                }else{
+                                    respuesta = ids;
+                                }
+                                quedada.setIds(respuesta);
+                            }
+                        });
                         quedadas.add(quedada);
                     }
                 }

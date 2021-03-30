@@ -27,19 +27,10 @@ public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
     @Override
     public View getInfoContents(final Marker m){
         View v = inflater.inflate(R.layout.info_window, null);
-        Button registro = v.findViewById(R.id.register);
         TextView afic = v.findViewById(R.id.aficion);
         TextView hora = v.findViewById(R.id.fecha);
-        TextView ok = v.findViewById(R.id.ok);
         afic.setText(aficion);
         hora.setText(horario);
-        registro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ok.setText("REGISTRADO");
-            }
-        });
-
         return v;
     }
     @Override
