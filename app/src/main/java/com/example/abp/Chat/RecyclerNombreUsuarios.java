@@ -14,10 +14,10 @@ import java.util.ArrayList;
 
 public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreUsuarios.ViewHolder>{
 
-    private ArrayList<usuario> usuarios;
+    private ArrayList<Usuario> Usuarios;
 
-    public RecyclerNombreUsuarios(ArrayList< usuario > arrayUsuarios) {
-        this.usuarios = arrayUsuarios;
+    public RecyclerNombreUsuarios(ArrayList<Usuario> arrayUsuarios) {
+        this.Usuarios = arrayUsuarios;
     }
 
 
@@ -32,12 +32,12 @@ public class RecyclerNombreUsuarios extends RecyclerView.Adapter<RecyclerNombreU
 
     @Override
     public void onBindViewHolder (@NonNull ViewHolder holder,int position){
-        holder.Usuarios.setText(usuarios.get(position).getNombre());
+        holder.Usuarios.setText(Usuarios.get(position).getNombre());
     }
 
     @Override
     public int getItemCount () {
-        return usuarios.size();
+        return Usuarios.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

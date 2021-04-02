@@ -1,11 +1,8 @@
 package com.example.abp.Chat;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,26 +28,26 @@ public class Chat extends Fragment {
     FirebaseDatabase database;
     DatabaseReference myRef;
 
-    ArrayList<mensaje> mensajes;
+    ArrayList<Mensaje> Mensajes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        /*FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
 
         escribir=(EditText) getView().findViewById(R.id.escribir);
         enviar=(Button) getView().findViewById(R.id.enviar);
         escribir1="";
-        mensajes = new ArrayList<mensaje>();
+        Mensajes = new ArrayList<Mensaje>();
 
         enviar.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                mensaje mensaje = new mensaje(escribir.getText().toString());
-                mensajes.add(mensaje);
+                Mensaje mensaje = new Mensaje(escribir.getText().toString());
+                Mensajes.add(mensaje);
 
-                myRef.setValue(mensajes);
+                myRef.setValue(Mensajes);
             }
         });
 
@@ -59,11 +56,11 @@ public class Chat extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.i("logTest " ,""+dataSnapshot.getChildrenCount());
 
-                mensajes.clear();
+                Mensajes.clear();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    mensaje mensaje = postSnapshot.getValue(mensaje.class);
-                    mensajes.add(mensaje);
+                    Mensaje mensaje = postSnapshot.getValue(Mensaje.class);
+                    Mensajes.add(mensaje);
                     Log.i("logTest",mensaje.getmensaje());
                 }
             }
@@ -73,7 +70,7 @@ public class Chat extends Fragment {
                 // Failed to read value
                 Log.i("logTest", "Failed to read value.", error.toException());
             }
-        });*/
+        });
         return inflater.inflate(R.layout.fragment_chat, container, false);
     }
 }

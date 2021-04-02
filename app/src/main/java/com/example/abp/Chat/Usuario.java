@@ -1,6 +1,6 @@
 package com.example.abp.Chat;
 
-public class usuario {
+public class Usuario {
     private String nombre;
 
     public String getNombre() {
