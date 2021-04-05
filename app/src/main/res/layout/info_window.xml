@@ -32,7 +32,7 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/title3"
+            app:layout_constraintStart_toEndOf="@+id/af"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -58,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/title2" />
 
         <TextView
-            android:id="@+id/title3"
+            android:id="@+id/af"
             android:layout_width="105dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
@@ -90,7 +90,7 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title3" />
+            app:layout_constraintTop_toBottomOf="@+id/af" />
 
         <Button
             android:id="@+id/register"

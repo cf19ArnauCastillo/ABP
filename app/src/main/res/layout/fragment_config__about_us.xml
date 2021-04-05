@@ -14,7 +14,7 @@
         android:background="@color/white">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/contact"
             android:layout_width="337dp"
             android:layout_height="113dp"
             android:fontFamily="sans-serif-black"
@@ -24,10 +24,10 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/inform" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/mailB"
             android:layout_width="390dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -38,10 +38,10 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/mailA" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/mailA"
             android:layout_width="390dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -54,10 +54,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/contact" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/mailC"
             android:layout_width="390dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -68,10 +68,10 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/mailB" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/inform"
             android:layout_width="337dp"
             android:layout_height="201dp"
             android:layout_marginTop="100dp"

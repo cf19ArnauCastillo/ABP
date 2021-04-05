@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name" translatable="false">ABP</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_menu_desplegable">Menu_desplegable</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="info">Registrate con tu cuenta de Google</string>
+    <string name="quedadas">QUEDADAS</string>
+    <string name="mapsFragment">MAPA</string>
+    <string name="chat">CHAT</string>
+    <string name="config">CONFIGURACION</string>
+    <string name="configFragment_Idioma">IDIOMAS</string>
+    <string name="configFragment_AboutUs">SOBRE NOSOTROS</string>
+    <string name="configFragment_Ajuda">AYUDA</string>
+    <string name="inform">SOMOS UN GRUPO ESTUDIANTIL DE DAM Y HEMOS HECHO ESTE PROYECTO</string>
+    <string name="contact">PARA OBTENER MAS INFORMACION PUEDES CONTACTARNOS EN LOS SIGUIENTES CORREOS</string>
+    <string name="help">SI TIENES PROBLEMAS CON LA APLICACION PUEDES CONTACTARNOS ENVIANDO UN CORREO EN LA PANTALLA "SOBRE NOSOTROS"</string>
+    <string name="laninfo">LA APLICACION SE HA DESARROLLADO EN LOS SIGUIENTES IDIOMAS</string>
+    <string name="options">SELECCIONA EL IDIOMA QUE DESEES</string>
+    <string name="nes_quedada">AÑADIR</string>
+    <string name="register">APUNTARSE</string>
+    <string name="af">AFICION</string>
+    <string name="map_transfer">LOCALIZACION</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="Menu_open">Open</string>
+    <string name="Menu_close">Close</string>
+</resources>
