@@ -17,7 +17,7 @@
             android:id="@+id/laninfo"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="sans-serif-black"
             android:gravity="center_horizontal"
             android:text="Aquesta app està disponible en aquests idiomes:"
@@ -30,9 +30,11 @@
 
         <ImageButton
             android:id="@+id/Espanol"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="50dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             android:src="@drawable/espana"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +42,11 @@
 
         <ImageButton
             android:id="@+id/Catalan"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="25dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             android:src="@drawable/catala"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,9 +54,11 @@
 
         <ImageButton
             android:id="@+id/English"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="25dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             android:src="@drawable/british"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
