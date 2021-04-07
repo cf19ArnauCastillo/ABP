@@ -15,6 +15,11 @@ import android.widget.Button;
 
 import java.util.Locale;
 
+/*
+        Hecho por: Cristian Montañés Escobar
+        Correo: cf19cristian.montanes@iesjoandaustria.org
+ */
+
 public class ConfigFragment_Idioma extends Fragment {
 
     public ConfigFragment_Idioma() {
